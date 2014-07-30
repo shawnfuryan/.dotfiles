@@ -1,8 +1,0 @@
-# source this file from .bashrc or similar file
-#  to set up environment for VirtualEnvWrapper
-#  which is a container for Python/Django apps
-
-# Initialize VirtualEnvWrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects/Python
-source /usr/local/bin/virtualenvwrapper.sh
