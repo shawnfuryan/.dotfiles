@@ -2,7 +2,32 @@
 #  to set up environment for VirtualEnvWrapper
 #  which is a container for Python/Django apps
 
+#
 # Initialize VirtualEnvWrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects/Python
+#
+
+# Set WORKON_HOME to $HOME/.virtualenvs if it
+#  exists, otherwise create it first.
+if [ -e $HOME/.virtualenvs ]; then
+  export WORKON_HOME=$HOME/.virtualenvs
+else
+  mkdir $HOME/.virtualenvs
+  export WORKON_HOME=$HOME/.virtualenvs
+fi
+
+# Set PROJECT_HOME to $HOME/Projects/Python if it
+#  exists, otherwise create it first.
+if [ -e $HOME/Projects/Python ]; then
+  export PROJECT_HOME=$HOME/Projects/Python
+else
+  if [ -e $HOME/Projects ]; then
+    mkdir $HOME/Projects/Python
+    echo "  Created $HOME/Projects/Python"
+  else
+    mkdir $HOME/Projects && mkdir $HOME/Projects/Python
+    echo "  Created $HOME/Projects/Python"
+  fi
+  export PROJECT_HOME=$HOME/Projects/Python
+fi
+ 
 source /usr/local/bin/virtualenvwrapper.sh
